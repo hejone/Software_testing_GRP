@@ -32,17 +32,42 @@ describe('Add.js', () => {
     describe('Edge value handling', () => {
         const posInf = Number.POSITIVE_INFINITY;
         const negInf = Number.NEGATIVE_INFINITY;
-        it('should give infinity', () => {
+        it('should give positive infinity', () => {
             expect(add(posInf, getPositiveNumber())).to.equal(posInf);
             expect(add(posInf, -getPositiveNumber())).to.equal(posInf);
-
-            expect(add(negInf, getPositiveNumber())).to.equal(negInf);
-            expect(add(negInf, -getPositiveNumber())).to.equal(negInf);
-
             expect(add(Number.MAX_VALUE, Number.MAX_VALUE)).to.equal(posInf);
         });
-        it('should give NaN', () => {
+        it('should give negative infinity', () => {
+            expect(add(negInf, getPositiveNumber())).to.equal(negInf);
+            expect(add(negInf, -getPositiveNumber())).to.equal(negInf);
+        });
+        it('adding Inf and -Inf should give NaN', () => {
             expect(add(posInf, negInf)).to.be.NaN;
+        });
+    });
+    describe('Testing with other datatypes than numbers', () => {
+        const string = "test_string";
+        const object = {'a': 1};
+        const number = getPositiveNumber();
+        it('string and number', () => {
+            const result = add(string, number);
+            expect(result).to.be.undefined;
+        });
+        it('object and number', () => {
+            const result = add(object, number);
+            expect(result).to.be.NaN;
+        });
+        it('string with string', () => {
+            const result = add(string, string);
+            expect(result).to.be.undefined;
+        });
+        it('object with object', () => {
+            const result = add(object, object);
+            expect(result).to.be.NaN;
+        });
+        it('string with object', () => {
+            const result = add(string, object);
+            expect(result).to.be.undefined;
         });
     });
 });

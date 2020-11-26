@@ -3,15 +3,40 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "test": "mocha --timeout 3000"
+    "build": "babel src -d src_cov",
+    "test": "cross-env NODE_ENV=test mocha",
+    "prepublish": "npm run build",
+	"coverage": "cross-env NODE_ENV=test nyc mocha"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/register": "^7.12.1",
+    "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
-    "mocha": "^8.2.0"
+    "cross-env": "^7.0.2",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0"
+  },
+  "nyc": {
+    "require": [
+      "@babel/register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false,
+	"exclude": ["src/.internal/**", "test/**"]
+  },
+  "mocha": {
+	"require": [
+	    "@babel/register"
+	    ]
   }
 }

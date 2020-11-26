@@ -93,4 +93,12 @@ describe('Divide.js', () => {
             expect(typeof divide(three, numberString) === 'number').to.be.true;
         });
     });
+    describe('Dividing by zero', () => {
+        it('should give Infinity when dividing integer with zero', () => {
+            expect(divide(three, 0)).to.equal(Number.POSITIVE_INFINITY);
+        });
+        it('should give NaN when dividing zero by zero', () => {
+            expect(divide(0, 0)).to.be.NaN;
+        });
+    });
 });

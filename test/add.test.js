@@ -46,28 +46,28 @@ describe('Add.js', () => {
         });
     });
     describe('Testing with other datatypes than numbers', () => {
-        const string = "test_string";
+        const numberString = "2";
         const object = {'a': 1};
         const number = getPositiveNumber();
         it('string and number', () => {
-            const result = add(string, number);
-            expect(result).to.be.undefined;
+            const result = add(numberString, number);
+            expect(typeof result === "number").to.be.false;
         });
         it('object and number', () => {
             const result = add(object, number);
             expect(result).to.be.NaN;
         });
         it('string with string', () => {
-            const result = add(string, string);
-            expect(result).to.be.undefined;
+            const result = add(numberString, numberString);
+            expect(typeof result === "number").to.be.false;
         });
         it('object with object', () => {
             const result = add(object, object);
             expect(result).to.be.NaN;
         });
         it('string with object', () => {
-            const result = add(string, object);
-            expect(result).to.be.undefined;
+            const result = add(numberString, object);
+            expect(typeof result === "number").to.be.false;
         });
     });
 });

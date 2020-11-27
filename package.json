@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel src -d src_cov",
     "test": "cross-env NODE_ENV=test mocha",
-    "prepublish": "npm run build",
-	"coverage": "cross-env NODE_ENV=test nyc mocha"
+    "coverage": "cross-env NODE_ENV=test nyc mocha && coveralls < coverage/lcov.info"
   },
   "author": "",
   "license": "MIT",
@@ -18,6 +16,7 @@
     "@babel/register": "^7.12.1",
     "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
+    "coveralls": "^3.1.0",
     "cross-env": "^7.0.2",
     "mocha": "^8.2.1",
     "nyc": "^15.1.0"
@@ -32,11 +31,14 @@
     ],
     "sourceMap": false,
     "instrument": false,
-	"exclude": ["src/.internal/**", "test/**"]
+    "exclude": [
+      "src/.internal/**",
+      "test/**"
+    ]
   },
   "mocha": {
-	"require": [
-	    "@babel/register"
-	    ]
+    "require": [
+      "@babel/register"
+    ]
   }
 }

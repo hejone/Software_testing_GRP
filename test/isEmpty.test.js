@@ -48,12 +48,12 @@ describe('IsEmpty.js', () => {
             const tester = new Proto(1);
             expect(isEmpty(tester)).to.be.false;
         });
+        it('should return false for non-empty Map', () => {
+            expect(isEmpty(map)).to.be.false;
+        });
         it('should return true for empty Map', () => {
             map.clear();
             expect(isEmpty(map)).to.be.true;
-        });
-        it('should return false for non-empty Map', () => {
-            expect(isEmpty(map)).to.be.false;
         });
     });
 });

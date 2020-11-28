@@ -10,6 +10,7 @@ const string = "test_string";
 const emptyString = "";
 const map = new Map();
 map.set('a', {"value": 1});
+const buff = new Buffer(8);
 
 function Proto(param1) {
     this.attr = param1;
@@ -54,6 +55,32 @@ describe('IsEmpty.js', () => {
         it('should return true for empty Map', () => {
             map.clear();
             expect(isEmpty(map)).to.be.true;
+        });
+        it("should return correctly for buffer", () => {
+            expect(isEmpty(buff)).to.be.false;
+        });
+        it("should return correctly for prototype objects", () => {
+            class Test {
+                constructor(one) {
+                    this.one = one;
+                }
+            };
+            expect(isEmpty(Test.prototype)).to.be.true;
+        });
+        it("should return correctly for typed array", () => {
+            let typedArray = new Int8Array(2);
+            typedArray[0] = 8;
+            expect(isEmpty(typedArray)).to.be.false;
+            typedArray = new Int8Array(0);
+            expect(isEmpty(typedArray)).to.be.true;
+        });
+        it("should return correctly for function and arguments object", () => {
+            const args_func = function(a,b) { return arguments; };
+            let args = args_func.apply(null, [])
+            expect(isEmpty(args)).to.be.true;
+            args = args_func.apply(null, [1,2]);
+            expect(isEmpty(args)).to.be.false;
+            expect(isEmpty(args_func)).to.be.true;
         });
     });
 });

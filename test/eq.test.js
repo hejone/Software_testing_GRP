@@ -15,11 +15,9 @@ describe('Eq.js', () => {
 			expect(eq(array, array)).to.be.true;
 			expect(eq(object, object)).to.be.true;
 		});
-		it('should evaluate two other types as equal when value is same', () => {
-			expect(eq(number, string)).to.be.true;
-			expect(eq(number, array)).to.be.true;
-			expect(eq(string, object.number)).to.be.true;
-			expect(eq(object.number, array)).to.be.true;
+		it('should evaluate two other types as inequal when value is same', () => {
+			expect(eq(number, string)).to.be.false;
+			expect(eq(number, array)).to.be.false;
 		});
 		it('should evaluate NaN, null and undefined as equal with same type', () => {
 			const nan = Number.NaN;
@@ -27,6 +25,9 @@ describe('Eq.js', () => {
 			expect(eq(null, null)).to.be.true;
 			expect(eq(undefined, undefined)).to.be.true;
 			expect(eq(null, undefined)).to.be.true;
+		});
+		it('should evaluate NaN and null or undefined as inequal', () => {
+			const nan = Number.NaN;
 			expect(eq(nan, undefined)).to.be.false;
 		});
 	});

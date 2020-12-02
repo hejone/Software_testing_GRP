@@ -38,12 +38,12 @@ describe('filter.js', () => {
             expect(result).to.eql([1], 'iteratee with index and array');
         });
 
-        it('should return [[]] if everything is filtered', () => {
-            expect(filter([-1,3], iterateeWithIndex)).to.eql([[]]);
+        it('should return [] if everything is filtered', () => {
+            expect(filter([-1,3], iterateeWithIndex)).to.eql([]);
         });
 
-        it('should return [[]] with empty array', () => {
-            expect(filter([], onlyOddValues)).to.eql([[]]);
+        it('should return [] with empty array', () => {
+            expect(filter([], onlyOddValues)).to.eql([]);
         });
     });
 
@@ -65,11 +65,11 @@ describe('filter.js', () => {
             expect(result).to.eql(['1']);
         });
 
-        it('should return [[]] with objects and null', () => {
+        it('should return [] with objects and null', () => {
             const obj = {'a': 1, 'b': 2};
-            expect(filter(obj, noFilter)).to.eql([[]]);
+            expect(filter(obj, noFilter)).to.eql([]);
 
-            expect(filter(null, noFilter)).to.eql([[]]);
+            expect(filter(null, noFilter)).to.eql([]);
         });
 
         it('should throw an error without iteratee', () => {

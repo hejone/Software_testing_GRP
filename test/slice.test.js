@@ -34,4 +34,9 @@ describe('slice.js', () => {
         const result = slice(arr, 5, 4);
         expect(result).to.eql([]);
     });
+    it('should not slice over the length of the array', () => {
+        const arr = [2, 3, 4, 5, 6, 7];
+        const result = slice(arr, 0, 8);
+        expect(result).to.eql(arr)
+    });
 });

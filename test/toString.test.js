@@ -30,8 +30,13 @@ describe('toString.js', () => {
         });
     });
 
-    describe('Object type input', () => {
+    describe('Misc type input', () => {
         const func = (a, b) => a + b;
+        it('should return an empty string for an undefined input', () => {
+            const input = undefined
+            const result = toString(input)
+            expect(result).to.eql('')
+        })
         it('should return the function definition as a string for a function', () => {
             const funct = func
             const result = toString(funct);

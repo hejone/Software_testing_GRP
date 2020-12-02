@@ -65,10 +65,12 @@ describe('filter.js', () => {
             expect(result).to.eql(['1']);
         });
 
-        it('should return [] with objects and null', () => {
+        it('should return [] with objects', () => {
             const obj = {'a': 1, 'b': 2};
             expect(filter(obj, noFilter)).to.eql([]);
+        });
 
+        it('should return [] with null', () => {
             expect(filter(null, noFilter)).to.eql([]);
         });
 

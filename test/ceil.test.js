@@ -16,4 +16,8 @@ describe('ceil.js', () => {
         const x = -9.1
         expect(ceil(x)).to.eql(-9);
       });
+      it('should return NaN for undefined input', () => {
+        const x = undefined
+        expect(ceil(x)).to.eql(NaN)
+      })
 });

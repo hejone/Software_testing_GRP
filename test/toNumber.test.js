@@ -55,7 +55,11 @@ describe('toNumber.js', () => {
         });
     });
 
-    describe('Object type input', () => {
+    describe('Other types of input', () => {
+        it('should return NaN for undefined input', () => {
+            const input = undefined;
+            expect(toNumber(input)).to.eql(NaN);
+        });
         it('should return NaN for an object', () => {
             const notanumber = {a: 2};
             const result = toNumber(notanumber);

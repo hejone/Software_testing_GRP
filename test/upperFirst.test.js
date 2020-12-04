@@ -24,6 +24,10 @@ describe('upperFirst.js', () => {
         });
     });
     describe('Other types of input', () => {
+        it('should return empty string for undefined input', () => {
+          const input = undefined;
+          expect(upperFirst(input)).to.eql('');
+        })
         it('should return number as a string', () => {
             let input = 2;
             expect(upperFirst(input)).to.eql(input.toString());

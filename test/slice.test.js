@@ -39,4 +39,9 @@ describe('slice.js', () => {
         const result = slice(arr, 0, 8);
         expect(result).to.eql(arr)
     });
+    it('should treat undefined as 0 for start and array.length for end', () => {
+        const arr = [2, 3, 4, 5, 6, 7];
+        const result = slice(arr, undefined, undefined)
+        expect(result).to.eql([2, 3, 4, 5, 6, 7]);
+    });
 });

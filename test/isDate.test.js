@@ -23,4 +23,8 @@ describe('isDate.js', () => {
       const input = [2, 3]
       expect(isDate(input)).to.eql(false);
     });
+    it('should return false for undefined', () => {
+      const input = undefined
+      expect(isDate(input)).to.eql(false)
+    })
 });

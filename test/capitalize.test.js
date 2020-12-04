@@ -32,5 +32,9 @@ describe('Capitalize.js', () => {
             const input = ['test', 2, 3, 'test2']
             expect(capitalize(input)).to.eql('Test,2,3,test2');
         });
+        it('should return empty string for undefined input', () => {
+            const input = undefined
+            expect(capitalize(input)).to.eql('Undefined');
+        })
     });
 });

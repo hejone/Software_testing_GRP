@@ -54,5 +54,8 @@ describe('toInteger.js', () => {
             const func = () => {return 4};
             expect(toInteger(func)).to.eql(0);
         });
+        it('should return NaN for undefined input', () => {
+            expect(toInteger(undefined)).to.eql(0);
+        });
     });
 });

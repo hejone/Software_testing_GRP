@@ -56,7 +56,7 @@ describe('Divide.js', () => {
             expect(result).to.be.above(0);
             expect(result).to.be.approximately(comparison, delta);
         });
-        it('should give negative decimal, that\'s > -1..0', () => {
+        it('should give negative decimal, that\'s -1..0', () => {
             const result = divide(-three, otherPrime);
             const comparison = -three / otherPrime;
             expect(Number.isInteger(result)).to.be.false;
@@ -84,18 +84,30 @@ describe('Divide.js', () => {
     describe('Datatypes other than number', () => {
         const numberString = "3";
         const object = {'a': 1};
-        it('should give datatype that\'s NaN', () => {
+        it('should give NaN when dividing with objects', () => {
             expect(divide(object, three)).to.be.NaN;
             expect(divide(numberString, object)).to.be.NaN;
         });
-        it('should give number', () => {
+        it('should give number when dividing with strings', () => {
             expect(typeof divide(numberString, three) === 'number').to.be.true;
             expect(typeof divide(three, numberString) === 'number').to.be.true;
         });
+        it('should return 1 if both divisor or dividend is undefined', () => {
+            expect(divide(undefined, undefined)).to.equal(1);
+        });
+        it('should return divisor if dividend is undefined', () => {
+            expect(divide(undefined, three)).to.equal(three);
+        });
+        it('should return dividend if divisor is undefined', () => {
+            expect(divide(three, undefined)).to.equal(three);
+        });
     });
     describe('Dividing by zero', () => {
-        it('should give Infinity when dividing integer with zero', () => {
+        it('should give Infinity when dividing positive number with zero', () => {
             expect(divide(three, 0)).to.equal(Number.POSITIVE_INFINITY);
+        });
+        it('should give -Infinity when dividing negative number with zero', () => {
+            expect(divide(-three, 0)).to.equal(Number.NEGATIVE_INFINITY);
         });
         it('should give NaN when dividing zero by zero', () => {
             expect(divide(0, 0)).to.be.NaN;

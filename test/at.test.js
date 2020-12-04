@@ -34,5 +34,8 @@ describe('At.js', () => {
             expect(at(testObj3, 'd[0]')).to.eqls([undefined]);
             expect(at(testObj2, 'a[0].b[0]')).to.eqls([undefined]);
         });
+        it('should give undefined if path is undefined', () => {
+            expect(at(testObj1, undefined)).to.eqls([undefined]);
+        });
     });
 });

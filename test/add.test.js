@@ -49,25 +49,33 @@ describe('Add.js', () => {
         const numberString = "2";
         const object = {'a': 1};
         const number = getPositiveNumber();
-        it('string and number', () => {
+        it('should not return number when adding string and number', () => {
             const result = add(numberString, number);
             expect(typeof result === "number").to.be.false;
         });
-        it('object and number', () => {
+        it('should not return number when adding object and number', () => {
             const result = add(object, number);
             expect(result).to.be.NaN;
         });
-        it('string with string', () => {
+        it('should not return number when adding string and string', () => {
             const result = add(numberString, numberString);
             expect(typeof result === "number").to.be.false;
         });
-        it('object with object', () => {
+        it('should not return number when adding object and object', () => {
             const result = add(object, object);
             expect(result).to.be.NaN;
         });
-        it('string with object', () => {
+        it('should not return number when adding string with object', () => {
             const result = add(numberString, object);
             expect(typeof result === "number").to.be.false;
+        });
+        it('should should return 0 if both oprators are undefined', () => {
+            expect(add(undefined, undefined)).to.equal(0);
+        });
+        it('should should return other value if another is undefined', () => {
+            const number = getPositiveNumber();
+            expect(add(number, undefined)).to.equal(number);
+            expect(add(undefined, number)).to.equal(number);
         });
     });
 });

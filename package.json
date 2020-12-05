@@ -31,9 +31,37 @@
     ],
     "sourceMap": false,
     "instrument": false,
+    "include": [
+       "src"
+    ],
     "exclude": [
       "src/.internal/**",
-      "test/**"
+      "test/**",
+      "src/camelCase.js",
+      "src/castArray.js",
+      "src/chunk.js",
+      "src/clamp.js",
+      "src/compact.js",
+      "src/countBy.js",
+      "src/defaultToAny.js",
+      "src/difference.js",
+      "src/drop.js",
+      "src/endsWith.js",
+      "src/every.js",
+      "src/get.js",
+      "src/isArguments.js",
+      "src/isArrayLike.js",
+      "src/isArrayLikeObject.js",
+      "src/isBuffer.js",
+      "src/isLength.js",
+      "src/isObject.js",
+      "src/isObjectLike.js",
+      "src/isSymbol.js",
+      "src/isTypedArray.js",
+      "src/keys.js",
+      "src/memoize.js",
+      "src/toFinite.js",
+      "src/words.js"
     ]
   },
   "mocha": {

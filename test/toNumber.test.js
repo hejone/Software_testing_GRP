@@ -35,6 +35,11 @@ describe('toNumber.js', () => {
             const result = toNumber(number);
             expect(result).to.eql(25);
         });
+        it('should return 0 for an empty string', () => {
+           const emptyString = ''
+           const result = toNumber(emptyString);
+           expect(result).to.eql(0);
+        });
     });
 
     describe('Number type input', () => {
